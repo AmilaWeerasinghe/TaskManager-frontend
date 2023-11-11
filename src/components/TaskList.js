@@ -2,6 +2,7 @@
 import React from 'react';
 
 const TaskList = ({ tasks, onDelete }) => {
+  console.log('taskList',tasks);
   return (
     <div>
       <h2>Task List</h2>

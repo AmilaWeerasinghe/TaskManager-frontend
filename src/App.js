@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from './components/Dashboard';
+import './App.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
+  const port = process.env.PORT || 5001;
+  console.log('port',port);
 
   useEffect(() => {
     // Fetch tasks from the backend when the component mounts
@@ -13,7 +16,7 @@ const App = () => {
   }, []);
 
   const handleAddTask = (newTask) => {
-    fetch('http://localhost:5000/tasks', {
+    fetch(`http://localhost:${port}/tasks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +27,7 @@ const App = () => {
       .then((data) => {
         console.log(data);
         // Refresh the tasks after adding a new task
-        fetch('http://localhost:5000/tasks')
+        fetch(`http://localhost:${port}/tasks`)
           .then((response) => response.json())
           .then((data) => setTasks(data))
           .catch((error) => console.error('Error fetching tasks:', error));
@@ -33,14 +36,14 @@ const App = () => {
   };
 
   const handleDeleteTask = (taskId) => {
-    fetch(`http://localhost:5000/tasks/${taskId}`, {
+    fetch(`http://localhost:${port}/tasks/${taskId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         // Refresh the tasks after deleting a task
-        fetch('http://localhost:5000/tasks')
+        fetch(`http://localhost:${port}/tasks`)
           .then((response) => response.json())
           .then((data) => setTasks(data))
           .catch((error) => console.error('Error fetching tasks:', error));
