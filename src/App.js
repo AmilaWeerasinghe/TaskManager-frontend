@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AddTaskPage from './components/AddTaskPage';
 import TaskListPage from './components/TaskListPage';
+import EditTaskPage from './components/EditTaskPage';
 import './App.css';
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <div className="nav-tiles">
         <Link to="/add-task">Add Task</Link>
         <Link to="/task-list">Task List</Link>
+        <Link to="/edit-task">Edit Task</Link>
       </div>
     </div>
   );
@@ -75,6 +77,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/add-task" element={<AddTaskPage onAdd={handleAddTask} />} />
         <Route path="/task-list" element={<TaskListPage tasks={tasks} onDelete={handleDeleteTask}/>} />
+        <Route path="/edit-task" element={<EditTaskPage />} /> 
       </Routes>
     </Router>
   );
