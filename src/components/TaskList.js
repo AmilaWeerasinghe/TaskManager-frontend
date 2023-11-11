@@ -5,7 +5,6 @@ const TaskList = ({ tasks, onDelete }) => {
   console.log('taskList',tasks);
   return (
     <div>
-      <h2>Task List</h2>
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>

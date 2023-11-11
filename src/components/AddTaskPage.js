@@ -5,10 +5,12 @@ import TaskForm from './TaskForm';
 
 const AddTaskPage = ({ onAdd }) => {
   return (
-    <div>
+    <div className="page-container">
       <h2>Add Task</h2>
       <TaskForm onSubmit={onAdd} />
-      <Link to="/">Back to Dashboard</Link>
+      <Link to="/" className="back-link">
+        Back to Dashboard
+      </Link>
     </div>
   );
 };

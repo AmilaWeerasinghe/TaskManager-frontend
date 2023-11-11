@@ -8,7 +8,7 @@ const TaskListPage = ({ onDelete }) => {
 
   useEffect(() => {
     // Fetch tasks from the backend when the component mounts
-    fetch('http://localhost:5000/tasks')
+    fetch('http://localhost:5001/tasks')
       .then((response) => response.json())
       .then((data) => setTasks(data))
       .catch((error) => console.error('Error fetching tasks:', error));
