@@ -1,4 +1,3 @@
-/* EditTaskPage.css */
 .page-container {
     max-width: 800px;
     margin: 0 auto;
@@ -65,15 +64,15 @@
   }
 
   .delete-task-button {
-    background-color: #ff5151; /* Red background color */
-    color: #fff; /* White text color */
-    padding: 10px 15px; /* Padding around the text */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Add rounded corners */
-    cursor: pointer; /* Change cursor on hover */
-    margin-top: 10px; /* Add some top margin for spacing */
+    background-color: #ff5151; 
+    color: #fff; 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-top: 10px; 
   }
   
   .delete-task-button:hover {
-    background-color: #e03f3f; /* Darker red on hover */
+    background-color: #e03f3f; 
   }

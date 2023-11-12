@@ -4,7 +4,7 @@ import TaskForm from './TaskForm';
 import { Typography, Button, Snackbar } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import './styles/AddTaskPage.css'; // Import the CSS file for styling
+import './styles/AddTaskPage.css'; 
 
 const AddTaskPage = ({ onAdd }) => {
   const [responseBanner, setResponseBanner] = useState(null);
@@ -31,7 +31,6 @@ const AddTaskPage = ({ onAdd }) => {
     <div className="page-container">
       <Typography variant="h4">Add Task</Typography>
 
-      {/* Display response banner using Material-UI Snackbar */}
       <Snackbar
         open={responseBanner !== null}
         autoHideDuration={6000}
@@ -46,7 +45,6 @@ const AddTaskPage = ({ onAdd }) => {
 
       <TaskForm onSubmit={handleAddTask} />
 
-      {/* Back to Dashboard link styled as a Material-UI Button */}
       <Button component={Link} to="/" variant="outlined" color="primary" className="back-link">
         Back to Dashboard
       </Button>

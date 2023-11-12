@@ -1,4 +1,3 @@
-/* TaskForm.css */
 .task-form {
     max-width: 400px;
     margin: 0 auto;
@@ -41,10 +40,9 @@
   }
 
   task-form textarea {
-    width: 100%; /* Set the width to 100% */
-    min-height: 100px; /* Set the minimum height */
-    resize: vertical; /* Allow vertical resizing */
-    /* Add any additional styles you want */
+    width: 100%;
+    min-height: 100px; 
+    resize: vertical; 
   }
 
   .response-banner {
@@ -55,11 +53,10 @@
     padding: 20px;
     text-align: center;
     color: #fff;
-    background-color: #4caf50; /* Green background color */
-    animation: slideIn 0.5s ease-out; /* Animation for slide-in effect */
+    background-color: #4caf50; 
+    animation: slideIn 0.5s ease-out; 
   }
   
-  /* Keyframes for the animation */
   @keyframes slideIn {
     from {
       transform: translateY(-100%);

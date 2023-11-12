@@ -28,7 +28,6 @@ const TaskListPage = () => {
       <Typography variant="h4">Task List</Typography>
       <Divider />
 
-      {/* Display tasks using Material-UI Card components */}
       <div className="task-list">
         {tasks.map((task) => (
           <Card key={task.id} variant="outlined" className="task-card">
