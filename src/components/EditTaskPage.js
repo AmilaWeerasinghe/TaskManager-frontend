@@ -77,52 +77,52 @@ const EditTaskPage = () => {
 
   return (
     <div className="page-container">
-      <h2>Edit Task</h2>
+    <h2>Edit Task</h2>
 
-      <div className="tasks-list-container">
-        <div className="tasks-list">
-          {/* Display the list of tasks */}
-          <ul>
-            {tasks.map((task) => (
-              <li key={task.id} onClick={() => handleSelectTask(task)}>
-                {task.title}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="edit-task-form">
-          {/* conditional rendering */}
-          {selectedTask && (
-            <>
-              <h3>Edit Task: {selectedTask.title}</h3>
-              <TaskForm initialTask={selectedTask} onSubmit={handleUpdateTask} />
-              <button onClick={handleDeleteTask} className="delete-task-button">
-                Delete Task
-              </button>
-              <p>
-                {/* Display task details for reference */}
-                Task ID: {selectedTask.id}, Priority: {selectedTask.priority}, Status: {selectedTask.status}
-              </p>
-            </>
-          )}
-
-          {/* Display a message if no task is selected */}
-          {!selectedTask && <p className="select-task-message">Select a task to edit.</p>}
-
-          {/* Response or error banner */}
-          {responseBanner && (
-            <div className={`response-banner ${responseBanner.type}`}>
-              <p>{responseBanner.message}</p>
-              <button onClick={handleBannerClose}>&times;</button>
-            </div>
-          )}
-        </div>
+    <div className="tasks-list-container">
+      <div className="tasks-list">
+        {/* Display the list of tasks */}
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id} onClick={() => handleSelectTask(task)}>
+              {task.title}
+            </li>
+          ))}
+        </ul>
       </div>
-      <Link to="/" className="back-link">
-        Back to Dashboard
-      </Link>
+
+      <div className="edit-task-form">
+        {/* conditional rendering */}
+        {selectedTask && (
+          <>
+            <h3>Edit Task: {selectedTask.title}</h3>
+            <TaskForm key={selectedTask.id} initialTask={selectedTask} onSubmit={handleUpdateTask} />
+            <button onClick={handleDeleteTask} className="delete-task-button">
+              Delete Task
+            </button>
+            <p>
+              {/* Display task details for reference */}
+              Task ID: {selectedTask.id}, Priority: {selectedTask.priority}, Status: {selectedTask.status}
+            </p>
+          </>
+        )}
+
+        {/* Display a message if no task is selected */}
+        {!selectedTask && <p className="select-task-message">Select a task to edit.</p>}
+
+        {/* Response or error banner */}
+        {responseBanner && (
+          <div className={`response-banner ${responseBanner.type}`}>
+            <p>{responseBanner.message}</p>
+            <button onClick={handleBannerClose}>&times;</button>
+          </div>
+        )}
+      </div>
     </div>
+    <Link to="/" className="back-link">
+      Back to Dashboard
+    </Link>
+  </div>
   );
 };
 
