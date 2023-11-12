@@ -47,3 +47,17 @@ h1 {
   color: #007bff;
   text-decoration: none;
 }
+
+/* Add these styles to your CSS file or style section */
+.task-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.task-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  width: 300px; /* Adjust the width as needed */
+}
