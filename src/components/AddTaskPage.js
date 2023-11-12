@@ -1,4 +1,3 @@
-// src/components/AddTaskPage.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TaskForm from './TaskForm';
@@ -9,7 +8,6 @@ const AddTaskPage = ({ onAdd }) => {
 
   const handleAddTask = async (newTask) => {
     try {
-      // Call the onAdd function passed as a prop
       await onAdd(newTask);
 
       // Show success banner
@@ -37,11 +35,7 @@ const AddTaskPage = ({ onAdd }) => {
           <button onClick={handleBannerClose}>&times;</button>
         </div>
       )}
-
-      {/* Task form */}
       <TaskForm onSubmit={handleAddTask} />
-
-      {/* Back to Dashboard link */}
       <Link to="/" className="back-link">
         Back to Dashboard
       </Link>

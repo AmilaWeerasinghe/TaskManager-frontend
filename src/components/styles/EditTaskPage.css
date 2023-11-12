@@ -63,3 +63,17 @@
     margin-left: 10px;
     color: inherit;
   }
+
+  .delete-task-button {
+    background-color: #ff5151; /* Red background color */
+    color: #fff; /* White text color */
+    padding: 10px 15px; /* Padding around the text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add rounded corners */
+    cursor: pointer; /* Change cursor on hover */
+    margin-top: 10px; /* Add some top margin for spacing */
+  }
+  
+  .delete-task-button:hover {
+    background-color: #e03f3f; /* Darker red on hover */
+  }

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TaskForm from './TaskForm';
-import './styles/EditTaskPage.css'; // Import the CSS file for styling
+import './styles/EditTaskPage.css';
 
 const EditTaskPage = () => {
   const [tasks, setTasks] = useState([]);
@@ -53,6 +53,24 @@ const EditTaskPage = () => {
     }
   };
 
+  const handleDeleteTask = async () => {
+    try {
+      const response = await fetch(`http://localhost:5001/tasks/${selectedTask.id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Error deleting task');
+      }
+
+      setResponseBanner({ type: 'success', message: 'Task deleted successfully' });
+      setSelectedTask(null);
+    } catch (error) {
+      console.error('Error deleting task:', error);
+      setResponseBanner({ type: 'error', message: 'Error deleting task' });
+    }
+  };
+
   const handleBannerClose = () => {
     setResponseBanner(null);
   };
@@ -74,11 +92,14 @@ const EditTaskPage = () => {
         </div>
 
         <div className="edit-task-form">
-          {/* Display the task form if a task is selected */}
+          {/* conditional rendering */}
           {selectedTask && (
             <>
               <h3>Edit Task: {selectedTask.title}</h3>
               <TaskForm initialTask={selectedTask} onSubmit={handleUpdateTask} />
+              <button onClick={handleDeleteTask} className="delete-task-button">
+                Delete Task
+              </button>
               <p>
                 {/* Display task details for reference */}
                 Task ID: {selectedTask.id}, Priority: {selectedTask.priority}, Status: {selectedTask.status}
