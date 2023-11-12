@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TaskForm from './TaskForm';
-import {
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Grid,
-  Snackbar,
-  Button,
-} from '@mui/material';
+import { Typography, List, ListItem, ListItemText, Paper, Grid, Snackbar, Button } from '@mui/material';
 import { Alert } from '@mui/material';
 
 const EditTaskPage = () => {
@@ -58,7 +49,7 @@ const EditTaskPage = () => {
       setSelectedTask(null);
     } catch (error) {
       console.error('Error updating task:', error);
-      setResponseBanner({ type: 'error', message: 'Error updating task' });
+      setResponseBanner({ type: 'error', message: `Error updating task: ${error}` });
     }
   };
 
@@ -72,11 +63,13 @@ const EditTaskPage = () => {
         throw new Error('Error deleting task');
       }
 
+      // Filter out the deleted task from the list
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== selectedTask.id));
       setResponseBanner({ type: 'success', message: 'Task deleted successfully' });
       setSelectedTask(null);
     } catch (error) {
       console.error('Error deleting task:', error);
-      setResponseBanner({ type: 'error', message: 'Error deleting task' });
+      setResponseBanner({ type: 'error', message: `Error deleting task: ${error.message}` });
     }
   };
 

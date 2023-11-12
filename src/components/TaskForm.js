@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, TextareaAutosize, Select, MenuItem, Button, FormControl, InputLabel, Container, Grid } from '@mui/material';
-import './styles/TaskForm.css'; // Import the CSS file for styling
+import './styles/TaskForm.css';
 
 const TaskForm = ({ initialTask, onSubmit }) => {
   const [task, setTask] = useState(initialTask || { title: '', priority: 'low', status: 'inProgress', description: '' });
