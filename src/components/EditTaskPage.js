@@ -1,8 +1,17 @@
-// EditTaskPage.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TaskForm from './TaskForm';
-import './styles/EditTaskPage.css';
+import {
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  Grid,
+  Snackbar,
+  Button,
+} from '@mui/material';
+import { Alert } from '@mui/material';
 
 const EditTaskPage = () => {
   const [tasks, setTasks] = useState([]);
@@ -76,53 +85,60 @@ const EditTaskPage = () => {
   };
 
   return (
-    <div className="page-container">
-    <h2>Edit Task</h2>
-
-    <div className="tasks-list-container">
-      <div className="tasks-list">
-        {/* Display the list of tasks */}
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id} onClick={() => handleSelectTask(task)}>
-              {task.title}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="edit-task-form">
-        {/* conditional rendering */}
-        {selectedTask && (
-          <>
-            <h3>Edit Task: {selectedTask.title}</h3>
-            <TaskForm key={selectedTask.id} initialTask={selectedTask} onSubmit={handleUpdateTask} />
-            <button onClick={handleDeleteTask} className="delete-task-button">
-              Delete Task
-            </button>
-            <p>
-              {/* Display task details for reference */}
-              Task ID: {selectedTask.id}, Priority: {selectedTask.priority}, Status: {selectedTask.status}
-            </p>
-          </>
-        )}
-
-        {/* Display a message if no task is selected */}
-        {!selectedTask && <p className="select-task-message">Select a task to edit.</p>}
-
-        {/* Response or error banner */}
-        {responseBanner && (
-          <div className={`response-banner ${responseBanner.type}`}>
-            <p>{responseBanner.message}</p>
-            <button onClick={handleBannerClose}>&times;</button>
-          </div>
-        )}
-      </div>
-    </div>
-    <Link to="/" className="back-link">
-      Back to Dashboard
-    </Link>
-  </div>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Typography variant="h2">Edit Task</Typography>
+      </Grid>
+      <Grid item xs={4}>
+        <Paper elevation={3}>
+          <Typography variant="h4">Tasks List</Typography>
+          <List>
+            {tasks.map((task) => (
+              <ListItem key={task.id} button onClick={() => handleSelectTask(task)}>
+                <ListItemText primary={task.title} />
+              </ListItem>
+            ))}
+          </List>
+        </Paper>
+      </Grid>
+      <Grid item xs={8}>
+        <Paper elevation={3}>
+          {selectedTask && (
+            <div>
+              <Typography variant="h4">Edit Task: {selectedTask.title}</Typography>
+              <TaskForm initialTask={selectedTask} onSubmit={handleUpdateTask} />
+              <Button variant="contained" color="secondary" onClick={handleDeleteTask}>
+                Delete Task
+              </Button>
+              <Typography>
+                Task ID: {selectedTask.id}, Priority: {selectedTask.priority}, Status:{' '}
+                {selectedTask.status}
+              </Typography>
+            </div>
+          )}
+          {!selectedTask && (
+            <Typography variant="body1" color="textSecondary">
+              Select a task to edit.
+            </Typography>
+          )}
+        </Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <Link to="/" className="back-link">
+          Back to Dashboard
+        </Link>
+      </Grid>
+      <Snackbar
+        open={responseBanner !== null}
+        autoHideDuration={6000}
+        onClose={handleBannerClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleBannerClose} severity={responseBanner?.type}>
+          {responseBanner?.message}
+        </Alert>
+      </Snackbar>
+    </Grid>
   );
 };
 

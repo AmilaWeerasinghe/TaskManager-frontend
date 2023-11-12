@@ -1,5 +1,6 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
+import { Container, Typography, Button } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AddTaskPage from './components/AddTaskPage';
 import TaskListPage from './components/TaskListPage';
@@ -8,16 +9,22 @@ import './App.css';
 
 const Home = () => {
   return (
-    <div className="app-container">
-      <h1>Task Management Dashboard</h1>
+    <Container className="app-container">
+      <Typography variant="h2">Task Management Dashboard</Typography>
 
       {/* Render buttons for Add Task and Task List */}
       <div className="nav-tiles">
-        <Link to="/add-task">Add Task</Link>
-        <Link to="/task-list">Task List</Link>
-        <Link to="/edit-task">Edit Task</Link>
+        <Button component={Link} to="/add-task" variant="contained" color="primary">
+          Add Task
+        </Button>
+        <Button component={Link} to="/task-list" variant="contained" color="primary">
+          Task List
+        </Button>
+        <Button component={Link} to="/edit-task" variant="contained" color="primary">
+          Edit Task
+        </Button>
       </div>
-    </div>
+    </Container>
   );
 };
 

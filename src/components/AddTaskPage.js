@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TaskForm from './TaskForm';
+import { Typography, Button, Snackbar } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 import './styles/AddTaskPage.css'; // Import the CSS file for styling
 
 const AddTaskPage = ({ onAdd }) => {
@@ -26,19 +29,27 @@ const AddTaskPage = ({ onAdd }) => {
 
   return (
     <div className="page-container">
-      <h2>Add Task</h2>
+      <Typography variant="h4">Add Task</Typography>
 
-      {/* Display response banner */}
-      {responseBanner && (
-        <div className={`response-banner ${responseBanner.type}`}>
-          <p>{responseBanner.message}</p>
-          <button onClick={handleBannerClose}>&times;</button>
-        </div>
-      )}
+      {/* Display response banner using Material-UI Snackbar */}
+      <Snackbar
+        open={responseBanner !== null}
+        autoHideDuration={6000}
+        onClose={handleBannerClose}
+        message={responseBanner?.message}
+        action={
+          <Button color="inherit" size="small" onClick={handleBannerClose}>
+            <CloseIcon fontSize="small" />
+          </Button>
+        }
+      />
+
       <TaskForm onSubmit={handleAddTask} />
-      <Link to="/" className="back-link">
+
+      {/* Back to Dashboard link styled as a Material-UI Button */}
+      <Button component={Link} to="/" variant="outlined" color="primary" className="back-link">
         Back to Dashboard
-      </Link>
+      </Button>
     </div>
   );
 };

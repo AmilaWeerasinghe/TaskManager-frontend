@@ -1,18 +1,22 @@
-// src/components/TaskList.js
 import React from 'react';
+import { List, ListItem, ListItemText, Button, Typography, Divider, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const TaskList = ({ tasks, onDelete }) => {
-  console.log('taskList',tasks);
   return (
     <div>
-      <ul>
+      <Typography variant="h6">Task List</Typography>
+      <Divider />
+      <List>
         {tasks.map((task) => (
-          <li key={task.id}>
-            {task.title} - {task.status}
-            <button onClick={() => onDelete(task.id)}>Delete</button>
-          </li>
+          <ListItem key={task.id} disablePadding>
+            <ListItemText primary={task.title} secondary={`Status: ${task.status}`} />
+            <IconButton color="error" onClick={() => onDelete(task.id)}>
+              <DeleteIcon />
+            </IconButton>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };

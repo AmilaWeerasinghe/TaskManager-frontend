@@ -1,7 +1,6 @@
-// TaskListPage.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css'
+import { Typography, Card, CardContent, Divider, Button, Box } from '@mui/material';
 
 const TaskListPage = () => {
   const [tasks, setTasks] = useState([]);
@@ -26,22 +25,27 @@ const TaskListPage = () => {
 
   return (
     <div>
-      <h2>Task List</h2>
+      <Typography variant="h4">Task List</Typography>
+      <Divider />
 
-      {/* Display tasks in a more organized way */}
+      {/* Display tasks using Material-UI Card components */}
       <div className="task-list">
         {tasks.map((task) => (
-          <div key={task.id} className="task-card">
-            <h3>{task.title}</h3>
-            <p>Description: {task.description}</p>
-            <p>Priority: {task.priority}</p>
-            <p>Status: {task.status}</p>
-          </div>
+          <Card key={task.id} variant="outlined" className="task-card">
+            <CardContent>
+              <Typography variant="h6">{task.title}</Typography>
+              <Typography variant="body1">Description: {task.description}</Typography>
+              <Typography variant="body2">Priority: {task.priority}</Typography>
+              <Typography variant="body2">Status: {task.status}</Typography>
+            </CardContent>
+          </Card>
         ))}
       </div>
-      <Link to="/" className="back-link">
-        Back to Dashboard
-      </Link>
+      <Box mt={2}>
+        <Button component={Link} to="/" variant="outlined" color="primary">
+          Back to Dashboard
+        </Button>
+      </Box>
     </div>
   );
 };
